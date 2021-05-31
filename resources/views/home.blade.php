@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body about">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -15,18 +15,15 @@
                     @endif
 
                     @if(Auth::user()->role == 'Admin')
-                   
-                   <h1> <a href="{{ url('product') }}">Kelola produk</a> <h1>
+                    <h1>Halo, {{Auth::user()->name}}</h1>
                   
-                    
+                   <h2> <a href="{{ url('product') }}">Kelola produk</a> <h2>
+                   @elseif(Auth::user()->role == 'Member')  
+                    <h2> <a href="{{ url('product') }}">Beli produk</a> <h2>
+                    <h1>Halo Member</h1>    
+ 
 
 
-
- <h1>Halo, {{Auth::user()->name}}</h1>
-@elseif(Auth::user()->role == 'Member')
-  <h1>Halo Member</h1>
-
-  <h1> <a href="{{ url('product') }}">Kelola produk</a> <h1>
 @endif
 
 
